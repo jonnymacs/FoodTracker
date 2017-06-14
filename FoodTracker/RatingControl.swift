@@ -14,23 +14,16 @@ import UIKit
     private var ratingButtons = [UIButton]()
     var rating = 0 {
         // didSet here updates the UI when the user changes the rating
-        didSet {
-            updateButtonSelectionStates()
-        }
+        // pretty rad
+        didSet { updateButtonSelectionStates() }
     }
     
     @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
         // didSet - here allows the buttons to resize in the dev storyboard
         // when they are changed from the attributes control in xcode
-        didSet {
-            setupButtons()
-        }
+        didSet { setupButtons() }
     }
-    @IBInspectable var starCount: Int = 5 {
-        didSet {
-            setupButtons()
-        }
-    }
+    @IBInspectable var starCount: Int = 5 { didSet { setupButtons() } }
     
     //MARK: Initialization
     override init(frame: CGRect) {
@@ -44,10 +37,11 @@ import UIKit
     }
 
     //MARK: Button Action
-    func ratingButtonTapped(button: UIButton) {
-        guard let index = ratingButtons.index(of: button) else {
-            fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
-        }
+    func ratingButtonTapped(button: UIButton) {     
+        //guard let index = ratingButtons.index(of: button) else {
+        //    fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
+        //}
+        let index = ratingButtons.index(of: button)!
         // Calculate the rating of the selected button
         let selectedRating = index + 1
         if selectedRating == rating {

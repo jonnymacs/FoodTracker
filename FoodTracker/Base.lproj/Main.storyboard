@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rQO-OM-egc">
-                                <rect key="frame" x="16" y="40" width="343" height="476.5"/>
+                                <rect key="frame" x="16" y="40" width="343" height="438.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVI-fr-XLh">
                                         <rect key="frame" x="128.5" y="0.0" width="86.5" height="20.5"/>
@@ -88,26 +88,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRu-kL-ms9">
-                                        <rect key="frame" x="50" y="66.5" width="243" height="30"/>
-                                        <state key="normal" title="Default Label Text"/>
-                                        <connections>
-                                            <action selector="setDefaultTextLabel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dgb-o1-iZF"/>
-                                        </connections>
-                                    </button>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="lGO-39-yHB">
-                                        <rect key="frame" x="0.0" y="104.5" width="343" height="320"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="343" height="320"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="mv0-pI-Bvg" appends="YES" id="vPM-kK-ScY"/>
                                         </connections>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3sW-cW-nbv" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
-                                        <rect key="frame" x="45.5" y="432.5" width="252" height="44"/>
+                                        <rect key="frame" x="45.5" y="394.5" width="252" height="44"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="PRu-kL-ms9" firstAttribute="leading" secondItem="rQO-OM-egc" secondAttribute="leading" constant="50" id="FU0-fy-nn9"/>
                                     <constraint firstItem="lGO-39-yHB" firstAttribute="leading" secondItem="rQO-OM-egc" secondAttribute="leading" id="lmj-Vd-VxY"/>
                                 </constraints>
                             </stackView>
