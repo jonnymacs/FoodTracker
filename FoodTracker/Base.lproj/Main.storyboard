@@ -48,6 +48,7 @@
                                     <outlet property="nameLabel" destination="St7-xf-Kar" id="YAa-ds-9SZ"/>
                                     <outlet property="photoImageView" destination="ObE-PV-uyB" id="tPv-m7-l0C"/>
                                     <outlet property="ratingControl" destination="eqv-GW-dqw" id="QKA-vk-PZS"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="HWy-w6-DUq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -118,7 +119,7 @@
                     <navigationItem key="navigationItem" title="Add a MealioDelio" id="QF6-xZ-PCD">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fYn-98-WNn">
                             <connections>
-                                <action selector="cancel:" destination="BYZ-38-t0r" id="5bu-8D-cdg"/>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="3lW-mc-bwd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="haI-Ae-BJL">
@@ -128,7 +129,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancel" destination="fYn-98-WNn" id="vwR-xO-49P"/>
                         <outlet property="nameTextField" destination="llf-kb-YqJ" id="nRx-YQ-1QG"/>
                         <outlet property="photoImageView" destination="lGO-39-yHB" id="jro-Rd-3k3"/>
                         <outlet property="ratingControl" destination="3sW-cW-nbv" id="pRv-zQ-AWR"/>
@@ -179,10 +179,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCJ-Hm-UEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+            <point key="canvasLocation" x="1116" y="463"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HWy-w6-DUq"/>
+    </inferredMetricsTieBreakers>
 </document>
