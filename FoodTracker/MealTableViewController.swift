@@ -21,7 +21,7 @@ class MealTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
         
         // load sample data
-        loadSampleMeals()
+        meals = loadMeals() ?? []
         
         
     }
@@ -73,6 +73,7 @@ class MealTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             meals.remove(at: indexPath.row)
+            saveMeals()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -130,34 +131,46 @@ class MealTableViewController: UITableViewController {
                 meals.append(meal)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            saveMeals()
         }
     }
 
     //MARK: Private Methods
-    private func loadSampleMeals() {
-        for i in 0..<3 {
-          let photo = UIImage(named: "meal\(i+1)")
-          guard let meal = Meal(name: "Meal Name \(i+1)", photo: photo, rating: i+2) else { fatalError("Unable to instantiate meal1") }
-          meals.append(meal)
-        }
+//    private func loadSampleMeals() {
+//        for i in 0..<3 {
+//          let photo = UIImage(named: "meal\(i+1)")
+//          guard let meal = Meal(name: "Meal Name \(i+1)", photo: photo, rating: i+2) else { fatalError("Unable to instantiate meal1") }
+//          meals.append(meal)
+//        }
+//        
+//         let photo1 = UIImage(named: "meal1")
+//         let photo2 = UIImage(named: "meal2")
+//         let photo3 = UIImage(named: "meal3")
+//         
+//         guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
+//             fatalError("Unable to instantiate meal1")
+//         }
+//         
+//         guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5) else {
+//             fatalError("Unable to instantiate meal2")
+//         }
+//         
+//         guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 5) else {
+//             fatalError("Unable to instantiate meal3")
+//         }
+//         
+//         meals += [meal1, meal2, meal3]
+//        
+//    }
+    
+    private func saveMeals() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
         
-        // let photo1 = UIImage(named: "meal1")
-        // let photo2 = UIImage(named: "meal2")
-        // let photo3 = UIImage(named: "meal3")
-        // 
-        // guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
-        //     fatalError("Unable to instantiate meal1")
-        // }
-        // 
-        // guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5) else {
-        //     fatalError("Unable to instantiate meal2")
-        // }
-        // 
-        // guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 5) else {
-        //     fatalError("Unable to instantiate meal3")
-        // }
-        // 
-        // meals += [meal1, meal2, meal3]
-        
+        if isSuccessfulSave { os_log("Meals saved successfully", log: OSLog.default, type: .debug) }
+        else { os_log("Meals not saved...", log: OSLog.default, type: .error) }
+    }
+    
+    private func loadMeals() -> [Meal]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
     }
 }
